@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Add a dish!";
+    ViewData["Header"] = "Add a new Dish!";
+    ViewData["Home"] = true;
+    ViewData["Add"] = false;
+}
+@model RichCRUDelicious.Models.Dish
+
+<div class="container d-flex flex-column text-center">
+    <h3><u>@Model.Name by @Model.Chef</u></h3>
+    <p>@Model.Description</p>
+    <p>Calories: @Model.Calories</p>
+    <p>Tastiness: @Model.Tastiness</p>
+    <footer class="container d-flex justify-content-center">
+        <form asp-action="Dish" asp-controller="Home" asp-route-operation="RedEdit" method="post">
+            @Html.HiddenFor(m => m.DishId, new {Value = @Model.DishId})
+            <button type="submit" class="btn btn-primary m-2">Edit</button>
+        </form>
+        <form asp-action="Dish" asp-controller="Home" asp-route-operation="Delete" method="post">
+            @Html.HiddenFor(m => m.DishId, new {Value = @Model.DishId})
+            <button type="submit" class="btn btn-danger m-2">Delete</button>
+        </form>
+    </footer>
+</div>

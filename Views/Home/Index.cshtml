@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["Header"] = "Welcome to CRUDelicious!";
+    ViewData["Home"] = false;
+    ViewData["Add"] = true;
+    var parms = new Dictionary<string, string>
+{
+{"operation", "View"}
+};
+}
+@model Dish
+
+<body class="container text-center">
+    <h3><u>Check out some real dishes:</u></h3>
+    <div class="d-flex flex-column">
+        @foreach (Dish d in ViewBag.AllDishes)
+        {
+            <span><a href="/dish/@d.DishId">@d.Name</a> by @d.Chef</span>
+        }
+    </div>
+</body>
